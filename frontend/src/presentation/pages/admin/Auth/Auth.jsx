@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle
@@ -17,46 +16,34 @@ import {
   TabsList,
   TabsTrigger
 } from '@/components/ui/tabs'
+import { RegisterForm } from '@/components/Admin/Auth'
 
 export const Auth = () => {
   return (
     <div className='auth bg-auth-bg min-h-screen bg-center bg-contain flex items-center flex-col pt-[100px]'>
       <Icon.LogoWhite className='logo w-[200px] mb-30' />
-      <Tabs defaultValue='account' className='w-[400px]'>
+      <Tabs defaultValue='register' className='w-[400px]'>
         <TabsList className='grid w-full grid-cols-2'>
-          <TabsTrigger value='account'>Account</TabsTrigger>
-          <TabsTrigger value='password'>Password</TabsTrigger>
+          <TabsTrigger value='register'>Registro</TabsTrigger>
+          <TabsTrigger value='login'>Login</TabsTrigger>
         </TabsList>
-        <TabsContent value='account'>
+        <TabsContent value='register'>
           <Card>
             <CardHeader>
-              <CardTitle>Account</CardTitle>
-              <CardDescription>
-                Make changes to your account here. Click save when you're done.
-              </CardDescription>
+              <CardTitle className='flex items-center flex-col'>Formulario De Registro</CardTitle>
             </CardHeader>
             <CardContent className='space-y-2'>
-              <div className='space-y-1'>
-                <Label htmlFor='name'>Name</Label>
-                <Input id='name' defaultValue='Pedro Duarte' />
-              </div>
-              <div className='space-y-1'>
-                <Label htmlFor='username'>Username</Label>
-                <Input id='username' defaultValue='@peduarte' />
-              </div>
+              <RegisterForm />
             </CardContent>
-            <CardFooter>
+            {/* <CardFooter>
               <Button>Save changes</Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </TabsContent>
-        <TabsContent value='password'>
+        <TabsContent value='login'>
           <Card>
             <CardHeader>
-              <CardTitle>Password</CardTitle>
-              <CardDescription>
-                Change your password here. After saving, you'll be logged out.
-              </CardDescription>
+              <CardTitle className='flex items-center flex-col'>Login</CardTitle>
             </CardHeader>
             <CardContent className='space-y-2'>
               <div className='space-y-1'>
