@@ -1,4 +1,4 @@
-import LogoWhite from './svg/tincode-white.svg'
+import LogoWhite from './svg/react.svg'
 import authBg from './jpg/auth-bg.jpg'
 import homeBanner from './jpg/home-banner.jpg'
 import noAvatar from './jpg/no-avatar.jpg'

@@ -1,8 +1,10 @@
-// import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
+import { Auth } from '../../../api/auth'
+import { toast, Toaster } from 'sonner'
+// import { auth } from '@/api/auth'
 
 export function RegisterForm () {
   const {
@@ -10,20 +12,60 @@ export function RegisterForm () {
     handleSubmit,
     control,
     formState: { errors },
-    watch
+    watch,
+    reset
   } = useForm({
     defaultValues: {
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       repeatPassword: '',
       terminos: false
     }
   })
-  const onSubmit = handleSubmit((data) => { console.log(data) })
+
+  const onSubmit = handleSubmit(async (data) => {
+    const auth = new Auth()
+    // const result = await Auth.register(data)
+    const result = await auth.register(data)
+
+    if (result.error) {
+      toast.error(result.error)
+    } else {
+      toast.success('Registrado correctamente')
+      reset()
+    }
+  })
 
   return (
     <div>
+      <Toaster position='top-center' richColors />
       <form onSubmit={onSubmit}>
+        <div className='space-y-1'>
+          <label htmlFor='firstname'>Nombre:</label>
+          <Input
+            type='text' id='firstname' {...register('firstname', {
+              required: {
+                value: true,
+                message: 'El campo nombre es requerido'
+              }
+            })}
+          />
+          {errors.firstname && <span className='text-red-600'>{errors.firstname.message}</span>}
+        </div>
+        <div className='space-y-1'>
+          <label htmlFor='lastname'>Apellido:</label>
+          <Input
+            type='text' id='lastname' {...register('lastname', {
+              required: {
+                value: true,
+                message: 'El campo apellido es requerido'
+              }
+            })}
+          />
+          {errors.lastname && <span className='text-red-600'>{errors.lastname.message}</span>}
+        </div>
         <div className='space-y-1'>
           <label htmlFor='email'>Correo:</label>
           <Input
