@@ -123,7 +123,7 @@ export function RegisterForm () {
           </div>
         </div>
         <div className='space-y-1 p-3'>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Registrar</Button>
         </div>
       </form>
     </div>

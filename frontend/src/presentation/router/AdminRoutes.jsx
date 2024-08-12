@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Auth, Users, Blog, Courses, Menu, Newsletter } from '../pages/admin'
 import { AdminLayout } from '../layouts'
-
-// const user = { valor: 2 }
-const user = null
+import { useAuth } from '@/hooks/useAuth'
 
 export function AdminRoutes () {
+  const { user } = useAuth()
+
   const loadLayout = (Layout, Page) => {
     return (
       <Layout>

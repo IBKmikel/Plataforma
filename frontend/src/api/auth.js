@@ -35,8 +35,6 @@ export class Auth {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          // firstname: info.firstname,
-          // lastname: info.lastname,
           email: info.email,
           password: info.password
         })
