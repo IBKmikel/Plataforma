@@ -29,7 +29,6 @@ export function LoginForm () {
   })
   const { login } = useAuth()
 
-  console.log()
   const onSubmit = handleSubmit(async (data) => {
     const auth = new Auth()
     const result = await auth.login(data)
@@ -37,6 +36,8 @@ export function LoginForm () {
     if (result.error) {
       toast.error(result.error)
     } else {
+      auth.setAccessToken(result.access)
+      auth.setRefreshToken(result.refresh)
       login(result.access)
       // reset()
     }
